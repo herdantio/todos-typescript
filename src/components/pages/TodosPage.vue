@@ -1,13 +1,23 @@
 <template>
   <div>
-    <h1>Hello World</h1>
+    <h1>{{text}}</h1>
   </div>
 </template>
 
 <script lang="ts">
-import {Vue} from 'vue-property-decorator'
+import {Component, Vue} from 'vue-property-decorator'
+import {mapState} from "vuex";
 
+
+@Component({
+  computed: {
+    ...mapState('todos', {
+      text: 'text'
+    })
+  }
+})
 export default class TodosPage extends Vue {
+  text!: string
 }
 
 </script>
